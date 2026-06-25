@@ -1,0 +1,228 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.app {
+  width: 100%;
+  max-width: 600px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+.error {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.error span {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* Input Row */
+.input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.input-row input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-row input:focus {
+  border-color: #667eea;
+}
+
+.btn-add {
+  padding: 12px 20px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-add:hover {
+  background: #5a67d8;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.btn-filter {
+  flex: 1;
+  padding: 8px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.btn-filter.active {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 16px;
+  padding: 8px 0;
+  border-top: 1px solid #f3f4f6;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+/* Todo List */
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #f9fafb;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+}
+
+.todo-item.done .todo-text {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.todo-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #667eea;
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 1rem;
+  color: #374151;
+}
+
+.edit-input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 2px solid #667eea;
+  border-radius: 6px;
+  font-size: 1rem;# How to Get a Personal Access Token (PAT) in GitHub
+
+---
+
+## 🔑 Two Types of Tokens
+
+| Type | Best For |
+|------|----------|
+| **Fine-grained PAT** | Specific repo access, more secure (recommended) |
+| **Classic PAT** | Broader access, legacy integrations |
+
+---
+
+## 📋 Step-by-Step Guide
+
+### **Option 1: Fine-Grained Token (Recommended)**
+
+1. **Log in** to [github.com](https://github.com)
+2. Click your **profile picture** → **Settings**
+3. Scroll down → click **Developer settings** (bottom of left sidebar)
+4. Click **Personal access tokens** → **Fine-grained tokens**
+5. Click **Generate new token**
+6. Fill in the details:
+   - **Token name** → e.g. `my-todo-app-token`
+   - **Expiration** → choose a duration (e.g. 30 days, 90 days)
+   - **Resource owner** → your GitHub account
+   - **Repository access** → All repos or specific repos
+   - **Permissions** → select what you need (e.g. `Contents: Read & Write`)
+7. Click **Generate token**
+8. **Copy the token immediately** — you won't see it again!
+
+---
+
+### **Option 2: Classic Token**
+
+1. **Log in** to [github.com](https://github.com)
+2. Click your **profile picture** → **Settings**
+3. Scroll down → click **Developer settings**
+4. Click **Personal access tokens** → **Tokens (classic)**
+5. Click **Generate new token** → **Generate new token (classic)**
+6. Fill in the details:
+   - **Note** → e.g. `my-project-token`
+   - **Expiration** → set an expiry date
+   - **Scopes** → check what you need:
+
+| Scope | Use Case |
+|-------|----------|
+| `repo` | Full access to repositories |
+| `read:org` | Read org membership |
+| `workflow` | Update GitHub Actions |
+| `write:packages` | Upload packages |
+| `delete_repo` | Delete repositories |
+
+7. Click **Generate token**
+8. **Copy and save it immediately!**
+
+---
+
+## 💻 How to Use Your Token
+
+### In Git (command line)
